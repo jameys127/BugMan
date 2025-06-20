@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1cf09dc34712bb044a4d1ccd88535340
+guid: 6937338c81276cd418ffbaedb8bf38f9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Bug_Man_'Cerul'_0
+      name: Bug_Man_'Cerul'_Flipped_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a2783f3c055ee104aa1b883a169540dd
-      internalID: 707293569
+      spriteID: 85fd3470f02f72d43af0822741c70f38
+      internalID: 1500079132
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bug_Man_'Cerul'_1
+      name: Bug_Man_'Cerul'_Flipped_1
       rect:
         serializedVersion: 2
         x: 25
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cb06ff36b9fd6a4caca72c6c4c881d2
-      internalID: 1246850662
+      spriteID: 6049ce6eff073d0488e4b941e25f048d
+      internalID: -1369298465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bug_Man_'Cerul'_2
+      name: Bug_Man_'Cerul'_Flipped_2
       rect:
         serializedVersion: 2
         x: 50
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f9c10febd6c42f488a9e9a1010fad6a
-      internalID: 1799522091
+      spriteID: 2a8b936ca78b1554a8156ce09d78dd1e
+      internalID: 1736566683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Bug_Man_'Cerul'_3
+      name: Bug_Man_'Cerul'_Flipped_3
       rect:
         serializedVersion: 2
         x: 75
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfa225b04b5e92f408caa93e72cbc205
-      internalID: -736923694
+      spriteID: f75e1e537280a5f40bc4a87ad728bcdb
+      internalID: -70799719
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bug_Man_'Cerul'_0: 707293569
-      Bug_Man_'Cerul'_1: 1246850662
-      Bug_Man_'Cerul'_2: 1799522091
-      Bug_Man_'Cerul'_3: -736923694
+      Bug_Man_'Cerul'_Flipped_0: 1500079132
+      Bug_Man_'Cerul'_Flipped_1: -1369298465
+      Bug_Man_'Cerul'_Flipped_2: 1736566683
+      Bug_Man_'Cerul'_Flipped_3: -70799719
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
