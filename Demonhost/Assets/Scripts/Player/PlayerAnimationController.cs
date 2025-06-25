@@ -39,7 +39,6 @@ public class PlayerAnimationController : MonoBehaviour
     private void PlayAnimation(Vector2 input){
         if(input.magnitude < 0.1f){
             if(lastYDirection == -1){
-                Debug.Log(lastXDirection);
                 animator.Play(lastXDirection > 0 ? idleRight : idleLeft);
                 return;
             }else{
