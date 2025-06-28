@@ -16,6 +16,8 @@ public class PlayerAnimationController : MonoBehaviour
     private int idleRight = Animator.StringToHash("IdleRight");
     private int idleBackLeft = Animator.StringToHash("IdleBackLeft");
     private int idleBackRight = Animator.StringToHash("IdleBackRight");
+    private int attackAnim = Animator.StringToHash("CerulAttackAnim");
+    private int attackAnimFlip = Animator.StringToHash("CerulAttackAnimFlip");
 
 
 
@@ -66,5 +68,9 @@ public class PlayerAnimationController : MonoBehaviour
             animator.Play(input.x > 0 ? walkRight : walkLeft);
             lastYDirection = -1;
         }
+    }
+
+    public void PlayAttack(){
+        animator.Play(lastXDirection > 0 ? attackAnimFlip : attackAnim);
     }
 }

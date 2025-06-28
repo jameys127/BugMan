@@ -3,19 +3,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerWalkingState : PlayerBaseState
 {
-    private Vector2 moveInput;
-    public override void EnterState(PlayerStateManager player)
+    public PlayerWalkingState (PlayerStateManager player) : base(player){
+        
+    }
+    public override void EnterState()
     {
         Debug.Log("Walking");
     }
-    public override void UpdateState(PlayerStateManager player, InputAction.CallbackContext context)
+    public override void UpdateState()
     {
-        moveInput = context.ReadValue<Vector2>();
-        if(moveInput.magnitude < 0.1f){
+        if(player.moveInput.magnitude < 0.1f){
             player.SwitchStates(player.idleState);
         }
-        player.rb.velocity = moveInput * player.moveSpeed;
-        player.playerAnimation.UpdateAnimation(moveInput);
-        
+        if(player.attackInput){
+            player.SwitchStates(player.attackState);
+        }
+    }
+    public override void FixedUpdateState()
+    {
+        player.rb.velocity = player.moveInput * player.moveSpeed;
+        player.playerAnimation.UpdateAnimation(player.moveInput);
     }
 }
