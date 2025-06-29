@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TabMenuScript : MonoBehaviour
 {
     [SerializeField] private GameObject menuScreen;
+
+    private InputAction tabAction;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +17,11 @@ public class TabMenuScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Tab)){
+        
+    }
+
+    public void OnTab(InputAction.CallbackContext context){
+        if(context.started){
             menuScreen.SetActive(!menuScreen.activeSelf);
         }
     }

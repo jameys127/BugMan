@@ -21,6 +21,8 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector]
     public bool attackInput;
     private Weapon weapon;
+    [HideInInspector]
+    public int direction;
 
     //VARIABLES
     [Header("Variables for Player")]
@@ -51,6 +53,7 @@ public class PlayerStateManager : MonoBehaviour
     }
 
     public void SwitchStates(PlayerBaseState newState){
+        if(currentState == newState) return;
         currentState = newState;
         newState.EnterState();
     }
@@ -65,6 +68,8 @@ public class PlayerStateManager : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context){
         if(context.started){
+            AttackDirection dir = GetMousePosition();
+            direction = (int)dir;
             attackInput = true;
         }
         if(context.canceled){
@@ -74,7 +79,42 @@ public class PlayerStateManager : MonoBehaviour
 
     public void OnAttackComplete(){
         if(currentState is PlayerAttackState attackState){
-            attackState.OnAttackComplete(this);
+            attackInput = false;
+            attackState.OnAttackComplete();
         }
+    }
+    public void SwingWeapon(){
+        if(currentState is PlayerAttackState attackState){
+            attackState.Swing();
+        }
+    }
+
+    private AttackDirection GetMousePosition(){
+        Vector3 mouseRelativePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mouseRelativePos - transform.position).normalized;
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        if(angle < 0) angle += 360;
+
+        if(angle >= 290 || angle < 20) return AttackDirection.LOWERRIGHT;
+        else if(angle >= 20 && angle < 70) return AttackDirection.UPPERRIGHT;
+        else if(angle >= 70 && angle < 90) return AttackDirection.UPRIGHT;
+        else if(angle >= 90 && angle < 110) return AttackDirection.UPLEFT;
+        else if(angle >= 110 && angle < 160) return AttackDirection.UPPERLEFT;
+        else if(angle >= 160 && angle < 250) return AttackDirection.LOWERLEFT;
+        else if(angle >= 250 && angle < 270) return AttackDirection.DOWNLEFT;
+        else                                return AttackDirection.DOWNRIGHT;
+    }
+
+
+    public enum AttackDirection{
+        UPLEFT, //0
+        UPRIGHT,//1
+        DOWNLEFT,//2
+        DOWNRIGHT,//3
+        UPPERLEFT,//4
+        UPPERRIGHT,//5
+        LOWERLEFT,//6
+        LOWERRIGHT//7
     }
 }

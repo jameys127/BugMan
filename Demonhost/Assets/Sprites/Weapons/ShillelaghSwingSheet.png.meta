@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f634a8275a637e741aeda3dd3bd50d3f
-      internalID: 1081221008
+      spriteID: f98190c4f5189d344b50eef1b7fc1ddf
+      internalID: -1107953997
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5fb3f439e97a334badc4ac01865b1e8
-      internalID: -432112343
+      spriteID: 78638d13adafa564d86390df26326149
+      internalID: -809030942
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bff6c93aadb6f8c4f85d95f61825815c
-      internalID: 455963223
+      spriteID: a936543d41beb934aa0b56cbad7dba8f
+      internalID: 2036835470
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f708baf3d8e179b45b56cf0c05e950b2
-      internalID: 1577658727
+      spriteID: 5d02612f1a3474d4ab187d0b9bbd1e25
+      internalID: -615520837
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShillelaghSwingSheet_0: 1081221008
-      ShillelaghSwingSheet_1: -432112343
-      ShillelaghSwingSheet_2: 455963223
-      ShillelaghSwingSheet_3: 1577658727
+      ShillelaghSwingSheet_0: -1107953997
+      ShillelaghSwingSheet_1: -809030942
+      ShillelaghSwingSheet_2: 2036835470
+      ShillelaghSwingSheet_3: -615520837
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

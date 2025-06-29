@@ -18,6 +18,8 @@ public class PlayerAnimationController : MonoBehaviour
     private int idleBackRight = Animator.StringToHash("IdleBackRight");
     private int attackAnim = Animator.StringToHash("CerulAttackAnim");
     private int attackAnimFlip = Animator.StringToHash("CerulAttackAnimFlip");
+    private int attackAnimBack = Animator.StringToHash("CerulAttackAnimBack");
+    private int attackAnimBackFlip = Animator.StringToHash("CerulAttackAnimBackFlip");
 
 
 
@@ -70,7 +72,50 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    public void PlayAttack(){
-        animator.Play(lastXDirection > 0 ? attackAnimFlip : attackAnim);
+    public void PlayAttack(int direction){
+        switch (direction){
+            case 0:
+                animator.Play(attackAnimBack);
+                lastXDirection = -1;
+                lastYDirection = 1;
+                break;
+            case 1:
+                animator.Play(attackAnimBackFlip);
+                lastXDirection = 1;
+                lastYDirection = 1;
+                break;
+            case 2:
+                animator.Play(attackAnim);
+                lastXDirection = -1;
+                lastYDirection = -1;
+                break;
+            case 3:
+                animator.Play(attackAnimFlip);
+                lastXDirection = 1;
+                lastYDirection = -1;
+                break;
+            case 4:
+                animator.Play(attackAnimBack);
+                lastXDirection = -1;
+                lastYDirection = 1;
+                break;
+            case 5:
+                animator.Play(attackAnimBackFlip);
+                lastXDirection = 1;
+                lastYDirection = 1;
+                break;
+            case 6:
+                animator.Play(attackAnim);
+                lastXDirection = -1;
+                lastYDirection = -1;
+                break;
+            case 7:
+                animator.Play(attackAnimFlip);
+                lastXDirection = 1;
+                lastYDirection = -1;
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -53,6 +53,9 @@ TagManager:
   - name: Player
     uniqueID: 514203895
     locked: 0
+  - name: Weapon
+    uniqueID: 2441442025
+    locked: 0
   - name: Walkbehind
     uniqueID: 502526257
     locked: 0

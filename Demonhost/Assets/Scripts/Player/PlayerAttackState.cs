@@ -10,18 +10,21 @@ public class PlayerAttackState : PlayerBaseState
     public override void EnterState()
     {
         Debug.Log("Attacking");
-        weapon.Enter();
         player.rb.velocity = Vector2.zero;
-        player.playerAnimation.PlayAttack();
+        player.playerAnimation.PlayAttack(player.direction);
     }
     public override void UpdateState()
     {
     }
 
-    public void OnAttackComplete(PlayerStateManager player){
+    public void OnAttackComplete(){
         player.SwitchStates(player.idleState);
     }
     public override void FixedUpdateState()
     {
+    }
+
+    public void Swing(){
+        weapon.Enter();
     }
 }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27f33696c7a062746a55a14c33ec8de9
+guid: dc1be774cfbfa044999f9ed2ceb28cff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_0
+      name: CerulAttackingAnimSheetBackFlip_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8871f6cc301b4ed4f8330b9e329f5c03
-      internalID: 107963203
+      spriteID: 0151d31a0e1a1d649b13dddfd1403c6f
+      internalID: 377641640
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_1
+      name: CerulAttackingAnimSheetBackFlip_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f163feb72fa24e44bab3c36ff02339a1
+      internalID: 1337092481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CerulAttackingAnimSheetBackFlip_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
-        height: 64
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,50 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e5d13b1818a8274dbfa2ef1585570dc
-      internalID: 20707368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2622d9591d42ced438030140672e0980
-      internalID: -531723958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4157940cb75ef83409b3864c4139fd88
-      internalID: -1609114477
+      spriteID: fc0299e4909c0184d87953a242e6bea6
+      internalID: -1144391321
       vertices: []
       indices: 
       edges: []
@@ -204,10 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShillelaghSwingSheetFlip_0: 107963203
-      ShillelaghSwingSheetFlip_1: 20707368
-      ShillelaghSwingSheetFlip_2: -531723958
-      ShillelaghSwingSheetFlip_3: -1609114477
+      CerulAttackingAnimSheetBackFlip_0: 377641640
+      CerulAttackingAnimSheetBackFlip_1: 1337092481
+      CerulAttackingAnimSheetBackFlip_2: -1144391321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 27f33696c7a062746a55a14c33ec8de9
+guid: d5575823d0c3ba447ba8afdb7775fa67
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_0
+      name: SwingSwipe_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 32
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -124,19 +124,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8871f6cc301b4ed4f8330b9e329f5c03
-      internalID: 107963203
+      spriteID: dfbbf9197b0b3614a9b3a4c7335fd384
+      internalID: -1553546961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_1
+      name: SwingSwipe_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dcdcdfb417521b4fb7e63f7fea29831
+      internalID: 889074505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SwingSwipe_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
-        width: 64
+        width: 32
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -145,50 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e5d13b1818a8274dbfa2ef1585570dc
-      internalID: 20707368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2622d9591d42ced438030140672e0980
-      internalID: -531723958
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ShillelaghSwingSheetFlip_3
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4157940cb75ef83409b3864c4139fd88
-      internalID: -1609114477
+      spriteID: 5d12c90ccee25334baa8385c9c4f0ad8
+      internalID: 1529659587
       vertices: []
       indices: 
       edges: []
@@ -204,10 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ShillelaghSwingSheetFlip_0: 107963203
-      ShillelaghSwingSheetFlip_1: 20707368
-      ShillelaghSwingSheetFlip_2: -531723958
-      ShillelaghSwingSheetFlip_3: -1609114477
+      SwingSwipe_0: -1553546961
+      SwingSwipe_1: 889074505
+      SwingSwipe_2: 1529659587
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
