@@ -23,6 +23,7 @@ public class PlayerStateManager : MonoBehaviour
     private Weapon weapon;
     [HideInInspector]
     public int direction;
+    public float angle;
 
     //VARIABLES
     [Header("Variables for Player")]
@@ -30,7 +31,7 @@ public class PlayerStateManager : MonoBehaviour
 
     void Awake()
     {
-        weapon = transform.Find("Weapon").GetComponent<Weapon>();
+        weapon = transform.Find("WeaponHolder").Find("Weapon").GetComponent<Weapon>();
         idleState = new PlayerIdleState(this);
         walkingState = new PlayerWalkingState(this);
         attackState = new PlayerAttackState(this, weapon);
@@ -68,7 +69,8 @@ public class PlayerStateManager : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context){
         if(context.started){
-            AttackDirection dir = GetMousePosition();
+            angle = GetMouseAngle();
+            AttackDirection dir = GetMousePosition(angle);
             direction = (int)dir;
             attackInput = true;
         }
@@ -89,20 +91,29 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
-    private AttackDirection GetMousePosition(){
+    private float GetMouseAngle(){
         Vector3 mouseRelativePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mouseRelativePos - transform.position).normalized;
 
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         if(angle < 0) angle += 360;
+        return angle;
+    }
 
-        if(angle >= 290 || angle < 20) return AttackDirection.LOWERRIGHT;
+    private AttackDirection GetMousePosition(float angle){
+        // Vector3 mouseRelativePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // Vector2 direction = (mouseRelativePos - transform.position).normalized;
+
+        // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // if(angle < 0) angle += 360;
+
+        if(angle >= 300 || angle < 20) return AttackDirection.LOWERRIGHT;
         else if(angle >= 20 && angle < 70) return AttackDirection.UPPERRIGHT;
         else if(angle >= 70 && angle < 90) return AttackDirection.UPRIGHT;
         else if(angle >= 90 && angle < 110) return AttackDirection.UPLEFT;
         else if(angle >= 110 && angle < 160) return AttackDirection.UPPERLEFT;
-        else if(angle >= 160 && angle < 250) return AttackDirection.LOWERLEFT;
-        else if(angle >= 250 && angle < 270) return AttackDirection.DOWNLEFT;
+        else if(angle >= 160 && angle < 240) return AttackDirection.LOWERLEFT;
+        else if(angle >= 240 && angle < 270) return AttackDirection.DOWNLEFT;
         else                                return AttackDirection.DOWNRIGHT;
     }
 

@@ -8,7 +8,6 @@ public class PlayerWalkingState : PlayerBaseState
     }
     public override void EnterState()
     {
-        Debug.Log("Walking");
     }
     public override void UpdateState()
     {

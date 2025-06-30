@@ -3,19 +3,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerIdleState : PlayerBaseState
 {
+    private float lastAttackTime;
     public PlayerIdleState(PlayerStateManager player) : base(player){
     }
     public override void EnterState()
     {
-        Debug.Log("idling");
         player.playerAnimation.UpdateAnimation(Vector2.zero);
+        lastAttackTime = Time.time;
     }
     public override void UpdateState()
     {
         if(player.moveInput.magnitude > 0.1f){
             player.SwitchStates(player.walkingState);
         }
-        if(player.attackInput){
+        if(player.attackInput && Time.time - lastAttackTime > 0.05f){
             player.SwitchStates(player.attackState);
         }
     }

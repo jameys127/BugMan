@@ -4,25 +4,37 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private float attackCounterResetCooldown;
+    [SerializeField] public float attackCounterResetCooldown;
+    [SerializeField] private GameObject playerBugMan;
+    private PlayerStateManager player;
     private Animator animator;
     private int counter;
     [SerializeField] private int counterLimit;
-    private Timer attackCounterResetTimer;
+    public Timer attackCounterResetTimer;
     private SpriteRenderer spriteRenderer;
+    private Vector3 positionOfWeapon;
 
     public void Enter(){
         attackCounterResetTimer.StopTimer();
+        positionOfWeapon = transform.parent.position;
         if(counter == counterLimit) counter = 0;
-        Debug.Log($"{transform.name} enter");
 
+        float adjustedAngle = player.angle -170f;
+        transform.parent.rotation = Quaternion.Euler(0, 0, adjustedAngle);
         spriteRenderer.enabled = true;
-        animator.SetBool("active", true);
+        if(player.direction == 0 || player.direction == 4){
+            transform.parent.position = new Vector3(transform.position.x, transform.position.y + 0.08f, transform.position.z);
+            spriteRenderer.sortingLayerName = "WeaponBehind";
+        }
         animator.SetInteger("counter", counter);
+        animator.SetBool("test", true);
+        // animator.SetInteger("direction", player.direction);
+        // animator.SetBool("active", true);
     }
 
     void Awake()
     {
+        player = playerBugMan.GetComponent<PlayerStateManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = gameObject.GetComponent<Animator>();
         attackCounterResetTimer = new Timer(attackCounterResetCooldown);
@@ -34,10 +46,12 @@ public class Weapon : MonoBehaviour
     }
 
     public void DisableWeapon(){
+        spriteRenderer.sortingLayerName = "WeaponInFront";
+        transform.parent.position = positionOfWeapon;
         spriteRenderer.enabled = false;
-        animator.SetBool("active", false);
+        // animator.SetBool("active", false);
+        animator.SetBool("test", false);
         counter++;
-        attackCounterResetTimer.StopTimer();
         attackCounterResetTimer.StartTimer();
     }
 

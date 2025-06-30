@@ -50,10 +50,13 @@ TagManager:
   - name: Collision
     uniqueID: 3111337325
     locked: 0
+  - name: WeaponBehind
+    uniqueID: 1804982377
+    locked: 0
   - name: Player
     uniqueID: 514203895
     locked: 0
-  - name: Weapon
+  - name: WeaponInFront
     uniqueID: 2441442025
     locked: 0
   - name: Walkbehind
