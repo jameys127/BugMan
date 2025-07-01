@@ -14,21 +14,26 @@ public class Weapon : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Vector3 positionOfWeapon;
 
+
     public void Enter(){
         attackCounterResetTimer.StopTimer();
-        positionOfWeapon = transform.parent.position;
         if(counter == counterLimit) counter = 0;
 
-        float adjustedAngle = player.angle -170f;
+        positionOfWeapon = transform.parent.position;
+
+        float adjustedAngle = player.angle -180f;
         transform.parent.rotation = Quaternion.Euler(0, 0, adjustedAngle);
         spriteRenderer.enabled = true;
-        if(player.direction == 0 || player.direction == 4){
-            transform.parent.position = new Vector3(transform.position.x, transform.position.y + 0.08f, transform.position.z);
+        if(player.direction == 5 || player.direction == 1 || player.direction == 3 || player.direction == 7){
+            transform.parent.position = new Vector3(transform.parent.position.x + 0.5f, transform.parent.position.y, transform.parent.position.z);
+        }
+        if(player.direction == 0 || player.direction == 4 || player.direction == 1 || player.direction == 5){
+            transform.parent.position = new Vector3(transform.parent.position.x, transform.parent.position.y + 0.13f, transform.parent.position.z);
             spriteRenderer.sortingLayerName = "WeaponBehind";
         }
         animator.SetInteger("counter", counter);
+        animator.SetInteger("direction", player.direction);
         animator.SetBool("test", true);
-        // animator.SetInteger("direction", player.direction);
         // animator.SetBool("active", true);
     }
 
