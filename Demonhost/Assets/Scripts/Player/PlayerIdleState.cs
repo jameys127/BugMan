@@ -19,6 +19,9 @@ public class PlayerIdleState : PlayerBaseState
         if(player.attackInput && Time.time - lastAttackTime > 0.05f){
             player.SwitchStates(player.attackState);
         }
+        if(player.dodgeInput){
+            player.SwitchStates(player.dodgeState);
+        }
     }
     public override void FixedUpdateState()
     {

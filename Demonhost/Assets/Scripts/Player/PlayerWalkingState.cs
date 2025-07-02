@@ -17,6 +17,9 @@ public class PlayerWalkingState : PlayerBaseState
         if(player.attackInput){
             player.SwitchStates(player.attackState);
         }
+        if(player.dodgeInput){
+            player.SwitchStates(player.dodgeState);
+        }
     }
     public override void FixedUpdateState()
     {

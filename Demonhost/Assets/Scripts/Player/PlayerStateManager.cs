@@ -10,26 +10,28 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerAttackState attackState;
     public PlayerIdleState idleState;
     public PlayerWalkingState walkingState;
+    public PlayerDodgeState dodgeState;
 
-    //COMPONENT REFERENCES
-    [HideInInspector]
-    public Rigidbody2D rb;
-    [HideInInspector]
-    public PlayerAnimationController playerAnimation;
-    [HideInInspector]
-    public Vector2 moveInput;
-    [HideInInspector]
-    public bool attackInput;
+    //REFERENCES OF COMPONENTS ON THE PLAYER
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public PlayerAnimationController playerAnimation;
     private Weapon weapon;
-    [HideInInspector]
-    public int direction;
-    [HideInInspector]
-    public Vector2 attackOffsetDirection;
-    public float angle;
+
+    //PLAYER INPUT VARIABLES
+    [HideInInspector] public Vector2 moveInput;
+    [HideInInspector] public bool attackInput;
+    [HideInInspector] public bool dodgeInput;
+    [HideInInspector] public int direction;
+    [HideInInspector] public Vector2 attackOffsetDirection;
+    [HideInInspector] public float angle;
+    [HideInInspector] public bool iFrames;
 
     //VARIABLES
     [Header("Variables for Player")]
     [SerializeField] public float moveSpeed;
+    [SerializeField] public float dodgeSpeed;
+
+
 
     void Awake()
     {
@@ -37,6 +39,7 @@ public class PlayerStateManager : MonoBehaviour
         idleState = new PlayerIdleState(this);
         walkingState = new PlayerWalkingState(this);
         attackState = new PlayerAttackState(this, weapon);
+        dodgeState = new PlayerDodgeState(this);
 
 
         rb = GetComponent<Rigidbody2D>();
@@ -81,6 +84,15 @@ public class PlayerStateManager : MonoBehaviour
         }
     }
 
+    public void Dodge(InputAction.CallbackContext context){
+        if(context.started){
+            dodgeInput = true;
+        }
+        if(context.canceled){
+            dodgeInput = false;
+        }
+    }
+
     public void OnAttackComplete(){
         if(currentState is PlayerAttackState attackState){
             attackInput = false;
@@ -100,7 +112,6 @@ public class PlayerStateManager : MonoBehaviour
             mouseRelativePos.y - transform.position.y
         ).normalized;
         attackOffsetDirection = mouseDirection;
-        Debug.Log($"AttackOffsetDirection magnitude: {attackOffsetDirection.magnitude}");
 
         float angle = Mathf.Atan2(attackOffsetDirection.y, attackOffsetDirection.x) * Mathf.Rad2Deg;
         if(angle < 0) angle += 360;
@@ -108,12 +119,12 @@ public class PlayerStateManager : MonoBehaviour
     }
 
     private AttackDirection GetMousePosition(float angle){
-        if(angle >= 300 || angle < 20) return AttackDirection.LOWERRIGHT;
-        else if(angle >= 20 && angle < 70) return AttackDirection.UPPERRIGHT;
+        if(angle >= 300 || angle < 10) return AttackDirection.LOWERRIGHT;
+        else if(angle >= 10 && angle < 70) return AttackDirection.UPPERRIGHT;
         else if(angle >= 70 && angle < 90) return AttackDirection.UPRIGHT;
         else if(angle >= 90 && angle < 110) return AttackDirection.UPLEFT;
-        else if(angle >= 110 && angle < 160) return AttackDirection.UPPERLEFT;
-        else if(angle >= 160 && angle < 240) return AttackDirection.LOWERLEFT;
+        else if(angle >= 110 && angle < 170) return AttackDirection.UPPERLEFT;
+        else if(angle >= 170 && angle < 240) return AttackDirection.LOWERLEFT;
         else if(angle >= 240 && angle < 270) return AttackDirection.DOWNLEFT;
         else                                return AttackDirection.DOWNRIGHT;
     }

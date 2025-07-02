@@ -20,6 +20,8 @@ public class PlayerAnimationController : MonoBehaviour
     private int attackAnimFlip = Animator.StringToHash("CerulAttackAnimFlip");
     private int attackAnimBack = Animator.StringToHash("CerulAttackAnimBack");
     private int attackAnimBackFlip = Animator.StringToHash("CerulAttackAnimBackFlip");
+    private int dodgeRight = Animator.StringToHash("DodgeRight");
+    private int dodgeLeft = Animator.StringToHash("DodgeLeft");
 
 
 
@@ -69,6 +71,22 @@ public class PlayerAnimationController : MonoBehaviour
         }else{
             animator.Play(input.x > 0 ? walkRight : walkLeft);
             lastYDirection = -1;
+        }
+    }
+
+    public void PlayDodge(bool isIdle){
+        if(isIdle){
+            if(lastXDirection == 1){
+
+            }else{
+                
+            }
+        }else{
+            if(lastXDirection == 1){
+                animator.Play(dodgeRight);
+            }else{
+                animator.Play(dodgeLeft);
+            }
         }
     }
 
