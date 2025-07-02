@@ -23,6 +23,8 @@ public class PlayerStateManager : MonoBehaviour
     private Weapon weapon;
     [HideInInspector]
     public int direction;
+    [HideInInspector]
+    public Vector2 attackOffsetDirection;
     public float angle;
 
     //VARIABLES
@@ -93,20 +95,19 @@ public class PlayerStateManager : MonoBehaviour
 
     private float GetMouseAngle(){
         Vector3 mouseRelativePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 direction = (mouseRelativePos - transform.position).normalized;
+        Vector2 mouseDirection = new Vector2(
+            mouseRelativePos.x - transform.position.x,
+            mouseRelativePos.y - transform.position.y
+        ).normalized;
+        attackOffsetDirection = mouseDirection;
+        Debug.Log($"AttackOffsetDirection magnitude: {attackOffsetDirection.magnitude}");
 
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        float angle = Mathf.Atan2(attackOffsetDirection.y, attackOffsetDirection.x) * Mathf.Rad2Deg;
         if(angle < 0) angle += 360;
         return angle;
     }
 
     private AttackDirection GetMousePosition(float angle){
-        // Vector3 mouseRelativePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        // Vector2 direction = (mouseRelativePos - transform.position).normalized;
-
-        // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        // if(angle < 0) angle += 360;
-
         if(angle >= 300 || angle < 20) return AttackDirection.LOWERRIGHT;
         else if(angle >= 20 && angle < 70) return AttackDirection.UPPERRIGHT;
         else if(angle >= 70 && angle < 90) return AttackDirection.UPRIGHT;

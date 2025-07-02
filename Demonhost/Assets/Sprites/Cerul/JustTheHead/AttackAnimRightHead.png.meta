@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b30cc07f33f78034e8bd55ca5ecb76e7
+guid: 33cafa38943e52849ad861e2fe6e1b78
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SwingSwipeSword2_0
+      name: AttackAnimRightHead_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 832b88dd745071b448a72111348397c0
-      internalID: -125004568
+      spriteID: bba784a97b4de6244b0b45da4d9a019f
+      internalID: 819393720
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwingSwipeSword2_1
+      name: AttackAnimRightHead_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c74ba0dc75a159d428defebbf41e5d7a
-      internalID: -943592586
+      spriteID: 858fdb17943f22c459a487ee5ffb8cb8
+      internalID: -2118551875
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SwingSwipeSword2_2
+      name: AttackAnimRightHead_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 64
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a8eb183fd2362742a564fa37af3775b
-      internalID: -1623372013
+      spriteID: 2697dc0641e3d11499589d7387e51f1c
+      internalID: 682020283
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      SwingSwipeSword2_0: -125004568
-      SwingSwipeSword2_1: -943592586
-      SwingSwipeSword2_2: -1623372013
+      AttackAnimRightHead_0: 819393720
+      AttackAnimRightHead_1: -2118551875
+      AttackAnimRightHead_2: 682020283
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,28 +13,37 @@ public class Weapon : MonoBehaviour
     public Timer attackCounterResetTimer;
     private SpriteRenderer spriteRenderer;
     private Vector3 positionOfWeapon;
+    private bool currentDirectionLeft;
+    private bool? lastSideLeft = null;
+
 
 
     public void Enter(){
         attackCounterResetTimer.StopTimer();
-        if(counter == counterLimit) counter = 0;
+        currentDirectionLeft = (player.angle >= 90 && player.angle < 270);
+        if(lastSideLeft != null && lastSideLeft != currentDirectionLeft){
+            counter++;
+        }
+        if(counter >= counterLimit) counter = 0;
 
         positionOfWeapon = transform.parent.position;
-
+        
         float adjustedAngle = player.angle -180f;
         transform.parent.rotation = Quaternion.Euler(0, 0, adjustedAngle);
+
+        Vector3 direction3D = player.attackOffsetDirection;
+        transform.parent.position += direction3D * 0.2f;
+        
+        
         spriteRenderer.enabled = true;
-        if(player.direction == 5 || player.direction == 1 || player.direction == 3 || player.direction == 7){
-            transform.parent.position = new Vector3(transform.parent.position.x + 0.5f, transform.parent.position.y, transform.parent.position.z);
-        }
+        
         if(player.direction == 0 || player.direction == 4 || player.direction == 1 || player.direction == 5){
-            transform.parent.position = new Vector3(transform.parent.position.x, transform.parent.position.y + 0.13f, transform.parent.position.z);
             spriteRenderer.sortingLayerName = "WeaponBehind";
         }
+
         animator.SetInteger("counter", counter);
         animator.SetInteger("direction", player.direction);
         animator.SetBool("test", true);
-        // animator.SetBool("active", true);
     }
 
     void Awake()
@@ -51,7 +60,8 @@ public class Weapon : MonoBehaviour
     }
 
     public void DisableWeapon(){
-        spriteRenderer.sortingLayerName = "WeaponInFront";
+        lastSideLeft = currentDirectionLeft;
+        spriteRenderer.sortingLayerName = "Player";
         transform.parent.position = positionOfWeapon;
         spriteRenderer.enabled = false;
         // animator.SetBool("active", false);
@@ -62,6 +72,7 @@ public class Weapon : MonoBehaviour
 
     private void ResetAttackCounter(){
         counter = 0;
+        lastSideLeft = null;
     }
 
     void OnEnable()
