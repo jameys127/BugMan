@@ -1,20 +1,24 @@
+using System;
 using UnityEngine;
 
 public class PlayerDodgeState : PlayerBaseState
 {
     private Timer timer;
     private Vector2 moveDirection;
+    private float dodgeDuration = 3f;
+    private float currentSpeed;
 
 
     public PlayerDodgeState(PlayerStateManager player) : base(player){
-        timer = new Timer(0.3f);
+        timer = new Timer(dodgeDuration);
     }
     public override void EnterState()
     {
         moveDirection = player.moveInput;
+        currentSpeed = player.dodgeSpeed;
         timer.OnTimerDone += DodgeComplete;
         timer.StartTimer();
-        // player.playerAnimation.PlayDodge(moveDirection.magnitude < 0.1f);
+        player.playerAnimation.PlayDodge(moveDirection);
 
     }
     public override void UpdateState()
@@ -24,13 +28,14 @@ public class PlayerDodgeState : PlayerBaseState
     public override void FixedUpdateState()
     {
         if(moveDirection.magnitude < 0.1f){
-            player.rb.velocity = new Vector2(1, 0) * player.dodgeSpeed;
+            currentSpeed *= 0.9f;
+            player.rb.velocity = new Vector2(player.playerAnimation.lastXDirection > 0 ? -1 : 1, 0) * currentSpeed;
         }else{
             player.rb.velocity = moveDirection * player.dodgeSpeed;
         }
     }
 
-    private void DodgeComplete(){
+    public void DodgeComplete(){
         timer.StopTimer();
         timer.OnTimerDone -= DodgeComplete;
         player.SwitchStates(player.idleState);

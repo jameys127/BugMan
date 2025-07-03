@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerAnimationController : MonoBehaviour
 {
-    private Animator animator;
-    private int lastXDirection = -1;
-    private int lastYDirection = -1;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public int lastXDirection = -1;
+    [HideInInspector] public int lastYDirection = -1;
 
     private int walkLeft = Animator.StringToHash("WalkLeft");
     private int walkRight = Animator.StringToHash("WalkRight");
@@ -20,8 +20,10 @@ public class PlayerAnimationController : MonoBehaviour
     private int attackAnimFlip = Animator.StringToHash("CerulAttackAnimFlip");
     private int attackAnimBack = Animator.StringToHash("CerulAttackAnimBack");
     private int attackAnimBackFlip = Animator.StringToHash("CerulAttackAnimBackFlip");
-    private int dodgeRight = Animator.StringToHash("DodgeRight");
-    private int dodgeLeft = Animator.StringToHash("DodgeLeft");
+    private int dodgeRight = Animator.StringToHash("CerulDodgeFlip");
+    private int dodgeLeft = Animator.StringToHash("CerulDodge");
+    private int dodgeFromIdle = Animator.StringToHash("CerulDodgeFromIdle");
+    private int dodgeFromIdleFlip = Animator.StringToHash("CerulDodgeFromIdleFlip");
 
 
 
@@ -74,12 +76,12 @@ public class PlayerAnimationController : MonoBehaviour
         }
     }
 
-    public void PlayDodge(bool isIdle){
-        if(isIdle){
+    public void PlayDodge(Vector2 moveDirection){
+        if(moveDirection.magnitude < 0.1f){
             if(lastXDirection == 1){
-
+                animator.Play(dodgeFromIdleFlip);
             }else{
-                
+                animator.Play(dodgeFromIdle);
             }
         }else{
             if(lastXDirection == 1){

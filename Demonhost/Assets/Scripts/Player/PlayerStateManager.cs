@@ -99,6 +99,12 @@ public class PlayerStateManager : MonoBehaviour
             attackState.OnAttackComplete();
         }
     }
+    public void OnDodgeComplete(){
+        if(currentState is PlayerDodgeState dodgeState){
+            dodgeInput = false;
+            dodgeState.DodgeComplete();
+        }
+    }
     public void SwingWeapon(){
         if(currentState is PlayerAttackState attackState){
             attackState.Swing();

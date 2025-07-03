@@ -4,12 +4,14 @@ using UnityEngine.InputSystem;
 public class PlayerIdleState : PlayerBaseState
 {
     private float lastAttackTime;
+    private float lastDodgeTime;
     public PlayerIdleState(PlayerStateManager player) : base(player){
     }
     public override void EnterState()
     {
         player.playerAnimation.UpdateAnimation(Vector2.zero);
         lastAttackTime = Time.time;
+        lastDodgeTime = Time.time;
     }
     public override void UpdateState()
     {
@@ -19,7 +21,7 @@ public class PlayerIdleState : PlayerBaseState
         if(player.attackInput && Time.time - lastAttackTime > 0.05f){
             player.SwitchStates(player.attackState);
         }
-        if(player.dodgeInput){
+        if(player.dodgeInput && Time.time - lastAttackTime > 0.05f){
             player.SwitchStates(player.dodgeState);
         }
     }
