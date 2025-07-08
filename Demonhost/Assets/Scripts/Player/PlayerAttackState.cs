@@ -7,7 +7,7 @@ public class PlayerAttackState : PlayerBaseState
     private Weapon weapon;
     public PlayerAttackState(PlayerStateManager player, Weapon weapon) : base(player){
         this.weapon = weapon;
-        timer = new Timer(weapon.attackCounterResetCooldown);
+        timer = new Timer(weapon.swingAnimationTime);
     }
     public override void EnterState()
     {

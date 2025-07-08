@@ -11934,6 +11934,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2117711833}
     - target: {fileID: 4023725431261792833, guid: 7e2eb555b6107354197b2437910a2d05, type: 3}
+      propertyPath: swingAnimationTime
+      value: 0.417
+      objectReference: {fileID: 0}
+    - target: {fileID: 4023725431261792833, guid: 7e2eb555b6107354197b2437910a2d05, type: 3}
       propertyPath: attackCounterResetCooldown
       value: 1
       objectReference: {fileID: 0}

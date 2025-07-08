@@ -6,6 +6,7 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] public float attackCounterResetCooldown;
     [SerializeField] private GameObject playerBugMan;
+    [SerializeField] public float swingAnimationTime;
     private PlayerStateManager player;
     private Animator animator;
     private int counter;

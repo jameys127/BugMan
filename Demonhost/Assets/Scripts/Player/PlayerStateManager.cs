@@ -32,7 +32,6 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] public float dodgeSpeed;
 
 
-
     void Awake()
     {
         weapon = transform.Find("WeaponHolder").Find("Weapon").GetComponent<Weapon>();
@@ -46,6 +45,10 @@ public class PlayerStateManager : MonoBehaviour
         playerAnimation = GetComponent<PlayerAnimationController>();
         currentState = idleState;
         currentState.EnterState();
+    }
+    void Start()
+    {
+        // Application.targetFrameRate = 15;
     }
 
     void Update()
