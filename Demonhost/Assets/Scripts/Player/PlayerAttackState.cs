@@ -12,7 +12,7 @@ public class PlayerAttackState : PlayerBaseState
     public override void EnterState()
     {
         player.attackInput = false;
-        timer.OnTimerDone += DebugSwithBack;
+        timer.OnTimerDone += SwitchBack;
         timer.StartTimer();
         player.rb.velocity = Vector2.zero;
         player.playerAnimation.PlayAttack(player.direction);
@@ -20,12 +20,6 @@ public class PlayerAttackState : PlayerBaseState
     public override void UpdateState()
     {
         timer.Tick();
-    }
-
-    public void OnAttackComplete(){
-        timer.StopTimer();
-        timer.OnTimerDone -= DebugSwithBack;
-        player.SwitchStates(player.idleState);
     }
     public override void FixedUpdateState()
     {
@@ -35,10 +29,9 @@ public class PlayerAttackState : PlayerBaseState
         weapon.Enter();
     }
 
-    private void DebugSwithBack(){
-        Debug.Log("I still don't really know why this happens");
+    private void SwitchBack(){
         timer.StopTimer();
-        timer.OnTimerDone -= DebugSwithBack;
+        timer.OnTimerDone -= SwitchBack;
         player.SwitchStates(player.idleState);
     }
 

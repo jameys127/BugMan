@@ -3,27 +3,36 @@ using UnityEngine;
 
 public class PlayerDodgeState : PlayerBaseState
 {
-    private Timer timer;
+    private Timer movingDodgeTimer;
+    private Timer idleDodgeTimer;
     private Vector2 moveDirection;
-    private float dodgeDuration = 3f;
+    private float dodgeDuration = 0.483f;
+    private float idleDodgeDuration = 0.683f;
     private float currentSpeed;
 
 
     public PlayerDodgeState(PlayerStateManager player) : base(player){
-        timer = new Timer(dodgeDuration);
+        movingDodgeTimer = new Timer(dodgeDuration);
+        idleDodgeTimer = new Timer(idleDodgeDuration);
     }
     public override void EnterState()
     {
         moveDirection = player.moveInput;
         currentSpeed = player.dodgeSpeed;
-        timer.OnTimerDone += DodgeComplete;
-        timer.StartTimer();
+        movingDodgeTimer.OnTimerDone += DodgeComplete;
+        idleDodgeTimer.OnTimerDone += DodgeComplete;
+        if(moveDirection.magnitude > 0.1f){
+            movingDodgeTimer.StartTimer();
+        }else{
+            idleDodgeTimer.StartTimer();
+        }
         player.playerAnimation.PlayDodge(moveDirection);
 
     }
     public override void UpdateState()
     {
-        timer.Tick();
+        movingDodgeTimer.Tick();
+        idleDodgeTimer.Tick();
     }
     public override void FixedUpdateState()
     {
@@ -36,8 +45,10 @@ public class PlayerDodgeState : PlayerBaseState
     }
 
     public void DodgeComplete(){
-        timer.StopTimer();
-        timer.OnTimerDone -= DodgeComplete;
+        movingDodgeTimer.StopTimer();
+        idleDodgeTimer.StopTimer();
+        movingDodgeTimer.OnTimerDone -= DodgeComplete;
+        idleDodgeTimer.OnTimerDone -= DodgeComplete;
         player.SwitchStates(player.idleState);
     }
 
