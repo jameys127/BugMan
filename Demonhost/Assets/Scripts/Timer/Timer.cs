@@ -28,7 +28,7 @@ public class Timer
     public void Tick(){
         if(!isActive) return;
         if(Time.time >= targetTime){
-            Debug.Log("timer is finished");
+            // Debug.Log("timer is finished");
             OnTimerDone?.Invoke();
             StopTimer();
         }

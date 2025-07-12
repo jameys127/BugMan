@@ -25,11 +25,14 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public Vector2 attackOffsetDirection;
     [HideInInspector] public float angle;
     [HideInInspector] public bool iFrames;
+    [HideInInspector] public bool attackStep;
 
     //VARIABLES
     [Header("Variables for Player")]
     [SerializeField] public float moveSpeed;
     [SerializeField] public float dodgeSpeed;
+    [HideInInspector] public float dodgeCooldown;
+    private float repelSpeed = 6f;
 
 
     void Awake()
@@ -45,6 +48,8 @@ public class PlayerStateManager : MonoBehaviour
         playerAnimation = GetComponent<PlayerAnimationController>();
         currentState = idleState;
         currentState.EnterState();
+
+        attackStep = false;
     }
     void Start()
     {
@@ -54,6 +59,13 @@ public class PlayerStateManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState();
+
+        if(dodgeCooldown > 0){
+            dodgeCooldown -= Time.deltaTime;
+        }else{
+            dodgeCooldown = 0;
+        }
+
     }
 
     void FixedUpdate()
@@ -82,13 +94,10 @@ public class PlayerStateManager : MonoBehaviour
             direction = (int)dir;
             attackInput = true;
         }
-        if(context.canceled){
-            attackInput = false;
-        }
     }
 
     public void Dodge(InputAction.CallbackContext context){
-        if(context.started){
+        if(context.started && dodgeCooldown == 0){
             dodgeInput = true;
         }
         if(context.canceled){
@@ -99,6 +108,16 @@ public class PlayerStateManager : MonoBehaviour
     public void SwingWeapon(){
         if(currentState is PlayerAttackState attackState){
             attackState.Swing();
+        }
+    }
+
+    public void IsStepping(){
+        attackStep = !attackStep;
+    }
+
+    public void Repel(){
+        if(currentState is PlayerAttackState attackState){
+            attackState.repel = true;
         }
     }
 
@@ -137,4 +156,5 @@ public class PlayerStateManager : MonoBehaviour
         LOWERLEFT,//6
         LOWERRIGHT//7
     }
+
 }

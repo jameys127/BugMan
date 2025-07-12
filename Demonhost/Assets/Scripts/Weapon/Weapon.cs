@@ -13,7 +13,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int counterLimit;
     public Timer attackCounterResetTimer;
     private SpriteRenderer spriteRenderer;
-    private Vector3 positionOfWeapon;
     private bool currentDirectionLeft;
     private bool? lastSideLeft = null;
 
@@ -27,8 +26,6 @@ public class Weapon : MonoBehaviour
         }
         if(counter >= counterLimit) counter = 0;
 
-        positionOfWeapon = transform.parent.position;
-        
         float adjustedAngle = player.angle -180f;
         transform.parent.rotation = Quaternion.Euler(0, 0, adjustedAngle);
 
@@ -63,9 +60,8 @@ public class Weapon : MonoBehaviour
     public void DisableWeapon(){
         lastSideLeft = currentDirectionLeft;
         spriteRenderer.sortingLayerName = "Player";
-        transform.parent.position = positionOfWeapon;
+        transform.parent.position = new Vector3(playerBugMan.transform.position.x, playerBugMan.transform.position.y - 0.1f, playerBugMan.transform.position.z);
         spriteRenderer.enabled = false;
-        // animator.SetBool("active", false);
         animator.SetBool("test", false);
         counter++;
         attackCounterResetTimer.StartTimer();
@@ -85,4 +81,5 @@ public class Weapon : MonoBehaviour
     {
         attackCounterResetTimer.OnTimerDone -= ResetAttackCounter;
     }
+
 }

@@ -84,7 +84,7 @@ public class PlayerAnimationController : MonoBehaviour
                 animator.Play(dodgeFromIdle);
             }
         }else{
-            if(lastXDirection == 1){
+            if(moveDirection.x > 0.1){
                 animator.Play(dodgeRight);
             }else{
                 animator.Play(dodgeLeft);

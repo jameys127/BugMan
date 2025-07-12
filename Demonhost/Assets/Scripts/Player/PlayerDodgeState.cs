@@ -17,6 +17,7 @@ public class PlayerDodgeState : PlayerBaseState
     }
     public override void EnterState()
     {
+        player.dodgeInput = false;
         moveDirection = player.moveInput;
         currentSpeed = player.dodgeSpeed;
         movingDodgeTimer.OnTimerDone += DodgeComplete;
@@ -49,6 +50,7 @@ public class PlayerDodgeState : PlayerBaseState
         idleDodgeTimer.StopTimer();
         movingDodgeTimer.OnTimerDone -= DodgeComplete;
         idleDodgeTimer.OnTimerDone -= DodgeComplete;
+        player.dodgeCooldown = 0.5f;
         player.SwitchStates(player.idleState);
     }
 
