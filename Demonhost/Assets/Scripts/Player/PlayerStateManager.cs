@@ -32,7 +32,6 @@ public class PlayerStateManager : MonoBehaviour
     [SerializeField] public float moveSpeed;
     [SerializeField] public float dodgeSpeed;
     [HideInInspector] public float dodgeCooldown;
-    private float repelSpeed = 6f;
 
 
     void Awake()

@@ -7,7 +7,7 @@ public class EnemyIdleState : EnemyBaseState{
 
     public override void EnterState()
     {
-        Debug.Log("please");
+        enemy.rb.velocity = Vector3.zero;
         enemy.animator.SetBool("Idle", true);
     }
 
@@ -15,10 +15,14 @@ public class EnemyIdleState : EnemyBaseState{
     {
     }
 
+    public override void LeaveState()
+    {
+        enemy.animator.SetBool("Idle", false);
+    }
+
     public override void UpdateState()
     {
         if(enemy.hit){
-            enemy.animator.SetBool("Idle", false);
             enemy.SwitchStates(enemy.hurtState);
         }
     }

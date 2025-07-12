@@ -8,6 +8,7 @@ public class WeaponHitBox : MonoBehaviour
     [SerializeField] private GameObject WeaponObject;
     private PlayerStateManager player;
     private Weapon weapon;
+    private Vector2 attackDirection;
 
 
     void Awake()
@@ -20,7 +21,8 @@ public class WeaponHitBox : MonoBehaviour
     {
         if(collision.CompareTag("Enemy")){
             Debug.Log("hit an enemy");
-            collision.gameObject.GetComponent<EnemyManager>().IGotHurt();
+            attackDirection = weapon.player.attackOffsetDirection;
+            collision.gameObject.GetComponent<EnemyManager>().IGotHurt(attackDirection);
             player.Repel();
         }
     }
