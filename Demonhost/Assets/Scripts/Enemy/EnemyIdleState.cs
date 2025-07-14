@@ -22,8 +22,14 @@ public class EnemyIdleState : EnemyBaseState{
 
     public override void UpdateState()
     {
+        // if(Vector2.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.attackRange){
+        //     enemy.SwitchStates(enemy.attackState);
+        // }
         if(enemy.hit){
             enemy.SwitchStates(enemy.hurtState);
+        }
+        if(enemy.withinRange){
+            enemy.SwitchStates(enemy.chasingState);
         }
     }
 }

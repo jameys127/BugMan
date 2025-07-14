@@ -15,6 +15,7 @@ public class Weapon : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private bool currentDirectionLeft;
     private bool? lastSideLeft = null;
+    [SerializeField] public int damage;
 
 
 

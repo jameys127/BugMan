@@ -22,7 +22,7 @@ public class WeaponHitBox : MonoBehaviour
         if(collision.CompareTag("Enemy")){
             Debug.Log("hit an enemy");
             attackDirection = weapon.player.attackOffsetDirection;
-            collision.gameObject.GetComponent<EnemyManager>().IGotHurt(attackDirection);
+            collision.gameObject.GetComponent<EnemyManager>().IGotHurt(attackDirection, weapon.damage);
             player.Repel();
         }
     }

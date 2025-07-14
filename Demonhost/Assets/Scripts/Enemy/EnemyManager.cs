@@ -8,31 +8,42 @@ public class EnemyManager : MonoBehaviour
     public EnemyIdleState idleState;
     public EnemyHurtState hurtState;
     public EnemyChasingState chasingState;
+    public EnemyDeadState deadState;
+    public EnemyAttackState attackState;
     public EnemyBaseState currentState;
 
     //ENEMY COMPONENTS
     public Animator animator;
     public Rigidbody2D rb;
+    public BoxCollider2D bc;
 
     //ENEMY VARIABLES
-    private int health;
+    public int health;
     public Transform player;
+    public float attackRange;
 
     //STATE TRIGGERS
     public bool hit;
     public Vector2 directionOfHit;
     public bool withinRange;
+    public int facingDirection;
+    public bool attackStep = false;
+    
 
     void Awake()
     {
         idleState = new EnemyIdleState(this);
         hurtState = new EnemyHurtState(this);
         chasingState = new EnemyChasingState(this);
+        deadState = new EnemyDeadState(this);
+        attackState = new EnemyAttackState(this);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        bc = GetComponent<BoxCollider2D>();
     }
     void Start()
     {
+        facingDirection = 1;
         currentState = idleState;
         currentState.EnterState();
         health = 100;
@@ -53,11 +64,23 @@ public class EnemyManager : MonoBehaviour
         currentState = nextState;
         nextState.EnterState();
     }
-    public void IGotHurt(Vector2 attackDirection){
-        Debug.Log("I got hurt");
-        health -= 10;
-        Debug.Log("My health is now: " + health);
+    public void IGotHurt(Vector2 attackDirection, int damage){
+        health -= damage;
         directionOfHit = attackDirection;
-        hit = true;
+        if(health <= 0){
+            SwitchStates(deadState);
+        }else{
+            hit = true;
+        }
+    }
+
+    public void AttackInterupt(){
+        if(currentState is EnemyAttackState attackState){
+            attackState.AttackInterupt();
+        }
+    }
+
+    public void AttackStep(){
+        attackStep = !attackStep;
     }
 }

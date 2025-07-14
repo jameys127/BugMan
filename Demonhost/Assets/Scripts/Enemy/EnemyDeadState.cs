@@ -7,21 +7,21 @@ public class EnemyDeadState : EnemyBaseState
     public EnemyDeadState(EnemyManager enemy) : base(enemy){}
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        enemy.rb.velocity = Vector2.zero;
+        enemy.bc.enabled = false;
+        enemy.animator.SetBool("Dead", true);
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void LeaveState()
     {
-        throw new System.NotImplementedException();
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+
     }
 }

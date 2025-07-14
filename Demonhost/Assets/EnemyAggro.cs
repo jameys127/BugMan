@@ -13,6 +13,9 @@ public class EnemyAggro : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")){
+            if(enemy.currentState is EnemyDeadState){
+                return;
+            }
             if(enemy.player == null){
                 enemy.player = collision.transform;
             }
@@ -25,6 +28,9 @@ public class EnemyAggro : MonoBehaviour
     {
         if(collision.CompareTag("Player")){
             enemy.withinRange = false;
+            if(enemy.currentState is EnemyDeadState){
+                return;
+            }
             enemy.SwitchStates(enemy.idleState);
         }
     }
