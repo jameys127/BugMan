@@ -11,10 +11,13 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerIdleState idleState;
     public PlayerWalkingState walkingState;
     public PlayerDodgeState dodgeState;
+    public PlayerDeadState deadState;
+    public PlayerHitState hitState;
 
     //REFERENCES OF COMPONENTS ON THE PLAYER
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public PlayerAnimationController playerAnimation;
+    [HideInInspector] public PlayerHealth health;
     private Weapon weapon;
 
     //PLAYER INPUT VARIABLES
@@ -26,12 +29,12 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public float angle;
     [HideInInspector] public bool iFrames;
     [HideInInspector] public bool attackStep;
+    [HideInInspector] public float dodgeCooldown;
 
     //VARIABLES
     [Header("Variables for Player")]
     [SerializeField] public float moveSpeed;
     [SerializeField] public float dodgeSpeed;
-    [HideInInspector] public float dodgeCooldown;
 
 
     void Awake()
@@ -41,10 +44,13 @@ public class PlayerStateManager : MonoBehaviour
         walkingState = new PlayerWalkingState(this);
         attackState = new PlayerAttackState(this, weapon);
         dodgeState = new PlayerDodgeState(this);
+        deadState = new PlayerDeadState(this);
+        hitState = new PlayerHitState(this);
 
 
         rb = GetComponent<Rigidbody2D>();
         playerAnimation = GetComponent<PlayerAnimationController>();
+        health = GetComponent<PlayerHealth>();
         currentState = idleState;
         currentState.EnterState();
 
@@ -113,11 +119,18 @@ public class PlayerStateManager : MonoBehaviour
     public void IsStepping(){
         attackStep = !attackStep;
     }
+    public void IFrames(){
+        iFrames = !iFrames;
+    }
 
     public void Repel(){
         if(currentState is PlayerAttackState attackState){
             attackState.repel = true;
         }
+    }
+
+    public void Die(){
+        SwitchStates(deadState);
     }
 
     private float GetMouseAngle(){

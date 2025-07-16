@@ -8,7 +8,7 @@ public class EnemyDeadState : EnemyBaseState
     public override void EnterState()
     {
         enemy.rb.velocity = Vector2.zero;
-        enemy.bc.enabled = false;
+        enemy.pc.enabled = false;
         enemy.animator.SetBool("Dead", true);
     }
 

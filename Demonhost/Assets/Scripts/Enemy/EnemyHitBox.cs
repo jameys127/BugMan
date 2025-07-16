@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHitBox : MonoBehaviour
 {
+    private PlayerStateManager player;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,7 +13,12 @@ public class EnemyHitBox : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")){
-            Debug.Log("got you");
+            player = collision.transform.GetComponent<PlayerStateManager>();
+            if(player.iFrames){
+                Debug.Log("you were dodging");
+            }else{
+                player.health.DamageHealth(30);
+            }
         }
     }
 }

@@ -27,6 +27,7 @@ public class PlayerDodgeState : PlayerBaseState
         }else{
             idleDodgeTimer.StartTimer();
         }
+        player.IFrames();
         player.playerAnimation.PlayDodge(moveDirection);
 
     }

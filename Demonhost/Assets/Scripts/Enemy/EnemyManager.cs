@@ -15,7 +15,7 @@ public class EnemyManager : MonoBehaviour
     //ENEMY COMPONENTS
     public Animator animator;
     public Rigidbody2D rb;
-    public BoxCollider2D bc;
+    public PolygonCollider2D pc;
 
     //ENEMY VARIABLES
     public int health;
@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
         attackState = new EnemyAttackState(this);
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
+        pc = GetComponent<PolygonCollider2D>();
     }
     void Start()
     {
