@@ -9,6 +9,7 @@ public class EnemyDeadState : EnemyBaseState
     {
         enemy.rb.velocity = Vector2.zero;
         enemy.pc.enabled = false;
+        Bloodsplatter();
         enemy.animator.SetBool("Dead", true);
     }
 
@@ -23,5 +24,9 @@ public class EnemyDeadState : EnemyBaseState
     public override void UpdateState()
     {
 
+    }
+    private void Bloodsplatter(){
+        Quaternion rotation = Quaternion.FromToRotation(Vector2.right, enemy.directionOfHit);
+        GameObject.Instantiate(enemy.bloodSplatter, enemy.transform.position, rotation);
     }
 }

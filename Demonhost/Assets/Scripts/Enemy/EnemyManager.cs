@@ -13,21 +13,25 @@ public class EnemyManager : MonoBehaviour
     public EnemyBaseState currentState;
 
     //ENEMY COMPONENTS
-    public Animator animator;
-    public Rigidbody2D rb;
-    public PolygonCollider2D pc;
+    [HideInInspector] public Animator animator;
+    [HideInInspector] public Rigidbody2D rb;
+    [HideInInspector] public PolygonCollider2D pc;
 
     //ENEMY VARIABLES
+    [Header("Player Health")]
     public int health;
-    public Transform player;
+    [HideInInspector] public Transform player;
+    [Header("Distance from player before attacking")]
     public float attackRange;
+    [Header("Blood Splatter Particle System")]
+    public ParticleSystem bloodSplatter;
 
     //STATE TRIGGERS
-    public bool hit;
-    public Vector2 directionOfHit;
-    public bool withinRange;
-    public int facingDirection;
-    public bool attackStep = false;
+    [HideInInspector] public bool hit;
+    [HideInInspector] public Vector2 directionOfHit;
+    [HideInInspector] public bool withinRange;
+    [HideInInspector] public int facingDirection;
+    [HideInInspector] public bool attackStep = false;
     
 
     void Awake()
@@ -46,7 +50,6 @@ public class EnemyManager : MonoBehaviour
         facingDirection = 1;
         currentState = idleState;
         currentState.EnterState();
-        health = 100;
     }
 
     void Update()

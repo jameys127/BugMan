@@ -11,6 +11,7 @@ public class EnemyHurtState : EnemyBaseState{
     {
         hitback = 4f;
         enemy.hit = false;
+        Bloodsplatter();
         enemy.animator.SetTrigger("Hit");
     }
 
@@ -26,5 +27,10 @@ public class EnemyHurtState : EnemyBaseState{
 
     public override void UpdateState()
     {
+    }
+
+    private void Bloodsplatter(){
+        Quaternion rotation = Quaternion.FromToRotation(Vector2.right, enemy.directionOfHit);
+        GameObject.Instantiate(enemy.bloodSplatter, enemy.transform.position, rotation);
     }
 }

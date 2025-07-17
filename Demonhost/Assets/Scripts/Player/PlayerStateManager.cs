@@ -27,7 +27,7 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public int direction;
     [HideInInspector] public Vector2 attackOffsetDirection;
     [HideInInspector] public float angle;
-    [HideInInspector] public bool iFrames;
+    [HideInInspector] public bool iFrames = false;
     [HideInInspector] public bool attackStep;
     [HideInInspector] public float dodgeCooldown;
 
@@ -58,7 +58,7 @@ public class PlayerStateManager : MonoBehaviour
     }
     void Start()
     {
-        // Application.targetFrameRate = 15;
+        // Application.targetFrameRate = 60;
     }
 
     void Update()

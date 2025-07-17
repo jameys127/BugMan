@@ -250,7 +250,7 @@ Transform:
   m_GameObject: {fileID: 64390819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30.1744, y: 9.466852, z: 0.0015984192}
+  m_LocalPosition: {x: 30.1744, y: 9.466852, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1422,9 +1422,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb: {fileID: 0}
   pc: {fileID: 0}
-  health: 0
+  health: 100
   player: {fileID: 0}
   attackRange: 1.2
+  bloodSplatter: {fileID: 996885660492375722, guid: 56fb00455392748458d70a34d446cc30, type: 3}
   hit: 0
   directionOfHit: {x: 0, y: 0}
   withinRange: 0
@@ -1439,7 +1440,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 667421905}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ffebae48ceede4e4f9fe22049495d73d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1688,7 +1689,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 514203895
   m_SortingLayer: 5
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12075,7 +12076,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 514203895
   m_SortingLayer: 5
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 379629931, guid: 4e7b538f869c8b34da9ca579defe87c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12120,7 +12121,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: ffebae48ceede4e4f9fe22049495d73d, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12297,7 +12298,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2117711833}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ffebae48ceede4e4f9fe22049495d73d, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -12473,7 +12474,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4993257467409716932, guid: 7e2eb555b6107354197b2437910a2d05, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4993257467409716932, guid: 7e2eb555b6107354197b2437910a2d05, type: 3}
       propertyPath: m_SortingLayerID
