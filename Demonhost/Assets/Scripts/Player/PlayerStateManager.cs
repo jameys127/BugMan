@@ -30,6 +30,7 @@ public class PlayerStateManager : MonoBehaviour
     [HideInInspector] public bool iFrames = false;
     [HideInInspector] public bool attackStep;
     [HideInInspector] public float dodgeCooldown;
+    [HideInInspector] public Vector2 enemyDirection;
 
     //VARIABLES
     [Header("Variables for Player")]
@@ -131,6 +132,10 @@ public class PlayerStateManager : MonoBehaviour
 
     public void Die(){
         SwitchStates(deadState);
+    }
+
+    public void EnemyDirection(Vector2 direction){
+        enemyDirection = direction;
     }
 
     private float GetMouseAngle(){

@@ -9,6 +9,7 @@ public class EnemyAttackState : EnemyBaseState{
     public override void EnterState()
     {
         attackStepSpeed = 5f;
+        enemy.attackCooldown = 1.2f;
         enemy.rb.velocity = Vector2.zero;
         attackDirection = (enemy.transform.position - enemy.player.transform.position).normalized;
         enemy.animator.SetBool("Attacking", true);
@@ -16,12 +17,12 @@ public class EnemyAttackState : EnemyBaseState{
 
     public override void FixedUpdateState()
     {
-        if(enemy.attackStep){
-            attackStepSpeed *= 0.8f;
-            enemy.rb.velocity = -attackDirection * attackStepSpeed;
-        }else{
-            enemy.rb.velocity = Vector2.zero;
-        }
+        // if(enemy.attackStep){
+        //     attackStepSpeed *= 0.8f;
+        //     enemy.rb.velocity = -attackDirection * attackStepSpeed;
+        // }else{
+        enemy.rb.velocity = Vector2.zero;
+        // }
     }
 
     public override void LeaveState()

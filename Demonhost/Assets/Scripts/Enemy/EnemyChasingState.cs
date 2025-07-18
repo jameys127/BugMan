@@ -22,7 +22,8 @@ public class EnemyChasingState : EnemyBaseState{
 
     public override void UpdateState()
     {
-        if(Vector2.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.attackRange){
+        if(Vector2.Distance(enemy.transform.position, enemy.player.transform.position) <= enemy.attackRange && 
+           enemy.attackCooldown <= 0){
             enemy.SwitchStates(enemy.attackState);
         }
         if(enemy.player.transform.position.x > enemy.transform.position.x && enemy.facingDirection == -1 ||

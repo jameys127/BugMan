@@ -14,6 +14,7 @@ public class EnemyHitBox : MonoBehaviour
     {
         if(collision.CompareTag("Player")){
             player = collision.transform.GetComponent<PlayerStateManager>();
+            player.EnemyDirection((transform.parent.transform.position - player.transform.position).normalized);
             if(player.iFrames){
                 Debug.Log("you were dodging");
             }else{

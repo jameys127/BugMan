@@ -24,9 +24,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void DamageHealth(int damage){
         currentHealth -= damage;
-        Debug.Log(currentHealth);
         if(currentHealth <= 0){
             player.Die();
+        }else{
+            player.SwitchStates(player.hitState);
         }
     }
 }

@@ -24,6 +24,8 @@ public class PlayerAnimationController : MonoBehaviour
     private int dodgeLeft = Animator.StringToHash("CerulDodge");
     private int dodgeFromIdle = Animator.StringToHash("CerulDodgeFromIdle");
     private int dodgeFromIdleFlip = Animator.StringToHash("CerulDodgeFromIdleFlip");
+    private int hit = Animator.StringToHash("CerulHit");
+    private int hitFlip = Animator.StringToHash("CerulHitFlip");
 
 
 
@@ -136,6 +138,14 @@ public class PlayerAnimationController : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void PlayHit(){
+        if(lastXDirection == 1){
+            animator.Play(hitFlip);
+        }else{
+            animator.Play(hit);
         }
     }
 }

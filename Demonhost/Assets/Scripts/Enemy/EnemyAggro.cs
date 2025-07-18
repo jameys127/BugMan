@@ -5,9 +5,13 @@ using UnityEngine;
 public class EnemyAggro : MonoBehaviour
 {
     private EnemyManager enemy;
+    private CircleCollider2D circleCollider;
+    private float initialAggroRange = 3.5f;
+    private float sustainedAggroRange = 8f;
     void Start()
     {
-        enemy = transform.parent.GetComponent<EnemyManager>();        
+        enemy = transform.parent.GetComponent<EnemyManager>();
+        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -20,6 +24,7 @@ public class EnemyAggro : MonoBehaviour
                 enemy.player = collision.transform;
             }
             enemy.withinRange = true;
+            circleCollider.radius = sustainedAggroRange;
             enemy.SwitchStates(enemy.chasingState);
         }
     }
@@ -27,6 +32,7 @@ public class EnemyAggro : MonoBehaviour
     void OnTriggerExit2D(Collider2D collision)
     {
         if(collision.CompareTag("Player")){
+            circleCollider.radius = initialAggroRange;
             enemy.withinRange = false;
             if(enemy.currentState is EnemyDeadState){
                 return;

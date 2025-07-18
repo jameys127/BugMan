@@ -1,20 +1,36 @@
 using UnityEngine;
 
 public class PlayerHitState : PlayerBaseState {
-    public PlayerHitState(PlayerStateManager player) : base(player){}
+    private float hitTimer = 0.433f;
+    private Timer timer;
+    private float hitBack;
+    public PlayerHitState(PlayerStateManager player) : base(player){
+        timer = new Timer(hitTimer);
+    }
 
     public override void EnterState()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Crazy");
+        hitBack = 4f;
+        timer.OnTimerDone += LeaveState;
+        timer.StartTimer();
+        player.playerAnimation.PlayHit();
     }
 
     public override void FixedUpdateState()
     {
-        throw new System.NotImplementedException();
+        player.rb.velocity = -player.enemyDirection * hitBack;
+        hitBack *= 0.8f;
     }
 
     public override void UpdateState()
     {
-        throw new System.NotImplementedException();
+        timer.Tick();
+    }
+    private void LeaveState(){
+        timer.StopTimer();
+        timer.OnTimerDone -= LeaveState;
+        Debug.Log("why");
+        player.SwitchStates(player.idleState);
     }
 }

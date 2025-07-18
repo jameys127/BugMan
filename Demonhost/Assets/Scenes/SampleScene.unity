@@ -1430,7 +1430,7 @@ MonoBehaviour:
   directionOfHit: {x: 0, y: 0}
   withinRange: 0
   facingDirection: 0
-  attackStep: 0
+  attackCooldown: 1
 --- !u!60 &667421913
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -5142,7 +5142,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 1.389595, y: 0.032395363}
   serializedVersion: 2
-  m_Radius: 3.4104767
+  m_Radius: 3.5
 --- !u!1 &1699125277
 GameObject:
   m_ObjectHideFlags: 3
@@ -12077,7 +12077,7 @@ SpriteRenderer:
   m_SortingLayerID: 514203895
   m_SortingLayer: 5
   m_SortingOrder: 1
-  m_Sprite: {fileID: 379629931, guid: 4e7b538f869c8b34da9ca579defe87c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ef2babfac7b432c46993fe6afba3a998, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -12358,6 +12358,7 @@ MonoBehaviour:
   iFrames: 0
   attackStep: 0
   dodgeCooldown: 0
+  enemyDirection: {x: 0, y: 0}
   moveSpeed: 4
   dodgeSpeed: 6
 --- !u!114 &2117711843

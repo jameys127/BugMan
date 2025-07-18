@@ -31,7 +31,7 @@ public class EnemyManager : MonoBehaviour
     [HideInInspector] public Vector2 directionOfHit;
     [HideInInspector] public bool withinRange;
     [HideInInspector] public int facingDirection;
-    [HideInInspector] public bool attackStep = false;
+    [HideInInspector] public float attackCooldown = 1.5f;
     
 
     void Awake()
@@ -55,6 +55,10 @@ public class EnemyManager : MonoBehaviour
     void Update()
     {
         currentState.UpdateState();
+        attackCooldown -= Time.deltaTime;
+        if(attackCooldown < 0){
+            attackCooldown = 0;
+        }
     }
 
     void FixedUpdate()
@@ -81,9 +85,5 @@ public class EnemyManager : MonoBehaviour
         if(currentState is EnemyAttackState attackState){
             attackState.AttackInterupt();
         }
-    }
-
-    public void AttackStep(){
-        attackStep = !attackStep;
     }
 }

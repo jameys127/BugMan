@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MushroomHitFlip
+  m_Name: CerulHitFlip
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,13 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -907026956, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
-    - time: 0.15
-      value: {fileID: 1852245383, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
-    - time: 0.26666668
-      value: {fileID: 1820839844, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
-    - time: 0.38333333
-      value: {fileID: -1575965946, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
+      value: {fileID: -1937740742, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
+    - time: 0.13333334
+      value: {fileID: -1053964121, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
+    - time: 0.28333333
+      value: {fileID: 1066914025, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
+    - time: 0.41666666
+      value: {fileID: 1066914025, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +50,16 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -907026956, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
-    - {fileID: 1852245383, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
-    - {fileID: 1820839844, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
-    - {fileID: -1575965946, guid: bd40400cd050cb840b880a4dfc77d931, type: 3}
+    - {fileID: -1937740742, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
+    - {fileID: -1053964121, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
+    - {fileID: 1066914025, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
+    - {fileID: 1066914025, guid: bd8a3e83cd7b9bf40be9f7d9e9ff9c78, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.4
+    m_StopTime: 0.43333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
