@@ -39,5 +39,6 @@ public class EnemyChasingState : EnemyBaseState{
     void FlipDirections(){
         enemy.facingDirection *= -1;
         enemy.transform.localScale = new Vector3(enemy.transform.localScale.x * -1, enemy.transform.localScale.y, enemy.transform.localScale.z);
+        enemy.healthScript.FlipDirection();
     }
 }

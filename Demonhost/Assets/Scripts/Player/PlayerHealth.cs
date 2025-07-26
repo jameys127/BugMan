@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     private PlayerStateManager player;
+    [SerializeField] private HealthBar healthBar;
     private int currentHealth;
     void Awake()
     {
@@ -14,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         currentHealth = 100;
+        healthBar.SetFullHealth(currentHealth);
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void DamageHealth(int damage){
         currentHealth -= damage;
+        healthBar.DamageHealth(damage);
         if(currentHealth <= 0){
             player.Die();
         }else{

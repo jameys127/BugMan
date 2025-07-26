@@ -16,10 +16,9 @@ public class EnemyManager : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public PolygonCollider2D pc;
+    [HideInInspector] public EnemyHealth healthScript;
 
     //ENEMY VARIABLES
-    [Header("Player Health")]
-    public int health;
     [HideInInspector] public Transform player;
     [Header("Distance from player before attacking")]
     public float attackRange;
@@ -44,9 +43,11 @@ public class EnemyManager : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         pc = GetComponent<PolygonCollider2D>();
+        healthScript = GetComponent<EnemyHealth>();
     }
     void Start()
     {
+
         facingDirection = 1;
         currentState = idleState;
         currentState.EnterState();
@@ -72,13 +73,8 @@ public class EnemyManager : MonoBehaviour
         nextState.EnterState();
     }
     public void IGotHurt(Vector2 attackDirection, int damage){
-        health -= damage;
+        healthScript.DamageHealth(damage);
         directionOfHit = attackDirection;
-        if(health <= 0){
-            SwitchStates(deadState);
-        }else{
-            hit = true;
-        }
     }
 
     public void AttackInterupt(){

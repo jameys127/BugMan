@@ -10,7 +10,6 @@ public class PlayerHitState : PlayerBaseState {
 
     public override void EnterState()
     {
-        Debug.Log("Crazy");
         hitBack = 4f;
         timer.OnTimerDone += LeaveState;
         timer.StartTimer();
@@ -30,7 +29,6 @@ public class PlayerHitState : PlayerBaseState {
     private void LeaveState(){
         timer.StopTimer();
         timer.OnTimerDone -= LeaveState;
-        Debug.Log("why");
         player.SwitchStates(player.idleState);
     }
 }
